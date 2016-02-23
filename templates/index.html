@@ -1,0 +1,49 @@
+{% load extras %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../static/js/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../static/styles.css">
+<title>ToDoList</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/index.js"></script>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="../static/styles.css">
+<link href="../static/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="container" id="main">
+    <h1>ToDoList</h1><span class="pull-right" style="margin: 20px 10px 0 0"><a href="/all/" >分页模式</a></span>
+
+    <form role="form" id="main_input_box">
+        <label>
+            <input type="text" class="form-control" id="custom_textbox" name="Item" placeholder="还有什么事情需要做?">
+            <input id="custom_textbox_btn" type="button" value="Add" class="btn btn-primary add_button">
+        </label>
+    </form>
+    <ol class="list-group list_of_items">
+        {% for log in logs %}
+        <li id="{{ log.id }}" class="list-group-item {% if log.state %}completed_item{% endif %}">
+            <div class="text_holder">
+                <span >{{ log.content }}</span>
+                <input type="text" size="50" class="itembox hide" value="">
+                <sapn>---{{ log.create_time|time_to_befor }}</sapn>
+                <div class="btn-group pull-right">
+                    <button class="delete btn btn-warning">Delete</button>
+                    <button class="edit btn btn-success">Edit</button>
+                </div>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" class="pull-right" {% if log.state %}checked{% endif %}>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+    <span id="more" class="btn btn-default" style="display:block;">加载更多</span>
+    <br/>
+</div>
+</body></html>
