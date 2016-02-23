@@ -1,4 +1,3 @@
-# django_todolist_advance
 一个django做的todolist的例子.
 ------------------------------
     有单页模式,有'加载更多'按钮,通过ajax动态向页面加载更多信息
